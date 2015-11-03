@@ -1,4 +1,4 @@
-Upgraden naar CustomBuild 2.0 (CB2)
+*Upgraden naar CustomBuild 2.0 (CB2)
 
 Om DirectAdmin te upgraden naar custombuild 2.0 (met PHP 5.5 en MySQL 5.6 + Apache 2.4), voer je het volgende uit:
 
