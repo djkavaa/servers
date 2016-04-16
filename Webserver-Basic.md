@@ -2,12 +2,14 @@
 
 Om DirectAdmin te upgraden naar custombuild 2.0 (met PHP 5.5 en MySQL 5.6 + Apache 2.4), voer je het volgende uit:
 
+'''
 cd /usr/local/directadmin
 mv custombuild custombuild_1.x
 wget -O custombuild.tar.gz http://files.directadmin.com/services/custombuild/2.0/custombuild.tar.gz
 tar xvzf custombuild.tar.gz
 cd custombuild
 ./build
+'''
 
 Om MySQL ook te upgraden naar versie 5.6, open je "options.conf" en zet je de waarde "mysql_inst" op "yes". Hier voer je uit:
 
