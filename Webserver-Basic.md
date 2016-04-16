@@ -66,38 +66,44 @@ sh install.sh
 INSTALL & ENABLE DKIM > http://help.directadmin.com/item.php?id=569
 
 1) Ensure the exim supports DKIM signging:
-[root@es5 ~]# /usr/sbin/exim -bV | grep 'Support for'
+[root@es5 ~]# `/usr/sbin/exim -bV | grep 'Support for'`
+
 Support for: crypteq IPv6 Perl OpenSSL move_frozen_messages Content_Scanning DKIM Old_Demime PRDR OCSP
 
 where we want to see DKIM in the list.
 If exim does not support DKIM, then re-compile exim.
 
 2) Add it to exim
+```
 cd /etc
 wget -O exim.dkim.conf http://files.directadmin.com/services/exim.dkim.conf
+```
 
 Then edit your /etc/exim.conf, and find the code:
+```
 remote_smtp:
  driver = smtp
+```
 and change it to look like
+```
 remote_smtp:
  driver = smtp
 .include_if_exists /etc/exim.dkim.conf
+```
 and restart exim
-/etc/init.d/exim restart
-
-
+`/etc/init.d/exim restart`
 
 3) Turn in on in DirectAdmin.
+```
 cd /usr/local/directadmin
 cp -f conf/directadmin.conf conf/directadmin.conf.backup
 echo 'dkim=1' >> conf/directadmin.conf
-
+```
 making absolutely sure that you're using two >> characters, else you'll empty your directadmin.conf.
 And confirm it's set, and restart DA:
-[root@es5 directadmin]# ./directadmin c | grep dkim
+`[root@es5 directadmin]# ./directadmin c | grep dkim1`
 dkim=1
-[root@es5 directadmin]# /etc/init.d/directadmin restart
+`[root@es5 directadmin]# /etc/init.d/directadmin restart`
 Stopping DirectAdmin:                                      [  OK  ]
 Starting DirectAdmin:                                      [  OK  ]
 
