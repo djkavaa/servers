@@ -2,31 +2,35 @@
 
 Om DirectAdmin te upgraden naar custombuild 2.0 (met PHP 5.5 en MySQL 5.6 + Apache 2.4), voer je het volgende uit:
 
-'''
+```
 cd /usr/local/directadmin
 mv custombuild custombuild_1.x
 wget -O custombuild.tar.gz http://files.directadmin.com/services/custombuild/2.0/custombuild.tar.gz
 tar xvzf custombuild.tar.gz
 cd custombuild
 ./build
-'''
+```
 
 Om MySQL ook te upgraden naar versie 5.6, open je "options.conf" en zet je de waarde "mysql_inst" op "yes". Hier voer je uit:
-
+```
 ./build all d
 ./build rewrite_confs
+```
 Het builden kan enige tijd (half uurtje) duren. Als alles klaar is met builden, herstart je apache:
 
 OPEN BASE DIR AANPASSEN
 
+```
 cd /usr/local/directadmin/data/users/ictweb/httpd.conf
 cd /usr/local/directadmin/data/templates/custom
+```
 virtual_host2.conf aanpassen open base dir weghalen
 
 REDIS INSTALL
 
 Shell
 
+```
 wget http://download.redis.io/releases/redis-3.0.1.tar.gz
 tar xzf redis-3.0.1.tar.gz
 cd redis-3.0.1
@@ -36,24 +40,28 @@ make install
 cd utils
 chmod +x install_server.sh
 ./install_server.sh
+```
 
 Check Redis status/start/stop
 
+```
 service redis_6379 status
 service redis_6379 start
+```
 
 Install CSF:
 
 Installation
 ============
 Installation is quite straightforward:
-
+```
 cd /usr/src
 rm -fv csf.tgz
 wget https://download.configserver.com/csf.tgz
 tar -xzf csf.tgz
 cd csf
 sh install.sh
+```
 
 INSTALL & ENABLE DKIM > http://help.directadmin.com/item.php?id=569
 
