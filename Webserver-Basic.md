@@ -101,9 +101,13 @@ echo 'dkim=1' >> conf/directadmin.conf
 ```
 making absolutely sure that you're using two >> characters, else you'll empty your directadmin.conf.
 And confirm it's set, and restart DA:
+
 `[root@es5 directadmin]# ./directadmin c | grep dkim1`
+
 dkim=1
+
 `[root@es5 directadmin]# /etc/init.d/directadmin restart`
+
 Stopping DirectAdmin:                                      [  OK  ]
 Starting DirectAdmin:                                      [  OK  ]
 
